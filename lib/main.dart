@@ -14,7 +14,10 @@ class notes_app extends StatelessWidget {
     return MaterialApp(debugShowCheckedModeBanner: false,
       routes: {main_page.main_id:(context) => main_page()},
       initialRoute: main_page.main_id,
-      theme: ThemeData.dark() ,
+      theme: ThemeData(brightness: Brightness.dark,
+      fontFamily: 'Poppins') ,
+      
+      
 
     );
   }
