@@ -21,7 +21,9 @@ class main_page extends StatelessWidget {
     child:  Text('Notes',style: TextStyle(fontWeight: FontWeight.bold),),
     ) ,),
 
-      body: customNote(),
+      body: ListView.builder(itemBuilder: ((context, index) {
+        return const customNote();
+      })),
     );
   }
 }
