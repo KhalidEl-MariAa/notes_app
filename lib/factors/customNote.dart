@@ -8,7 +8,7 @@ class customNote extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(20),
+      padding: const EdgeInsets.only(top: 20,right: 20,left: 20,bottom: 0),
       child: Container(
         padding: const EdgeInsets.only(top: 16,bottom: 10),
         decoration: BoxDecoration(borderRadius: BorderRadius.circular(15),color: Colors.amber[300]),
