@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
+import 'package:notes_app/factors/add_note_showbottom.dart';
 
 import '../factors/customNote.dart';
 
@@ -20,8 +19,11 @@ class main_page extends StatelessWidget {
     padding:  EdgeInsets.only(left:8.0),
     child:  Text('Notes',style: TextStyle(fontWeight: FontWeight.bold),),
     ) ,),
-
-      body: ListView.builder(itemBuilder: ((context, index) {
+    floatingActionButton: FloatingActionButton(onPressed: () {
+      showModalBottomSheet(context: context, builder: (context) => Notes_Add());
+    },
+    child: const Icon(Icons.add)),
+     body: ListView.builder(itemBuilder: ((context, index) {
         return const customNote();
       })),
     );
