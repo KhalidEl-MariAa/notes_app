@@ -9,8 +9,9 @@ class Notes_Add extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(top:30,left: 20,right: 20),
-      child: Column(children: [CustomTextField()],),
+      padding: const EdgeInsets.only(top:50,left: 20,right: 20),
+      child: Column(children: [CustomTextField(hintext: 'Title',),SizedBox(height: 20,)
+      , CustomTextField(hintext: 'Content',MaxLines: 5,)],),
     );
   }
 }
