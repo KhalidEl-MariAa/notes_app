@@ -1,6 +1,7 @@
 
 
 import 'package:flutter/material.dart';
+import 'package:notes_app/Models/note_models.dart';
 import 'package:notes_app/factors/custom_button.dart';
 import 'package:notes_app/factors/custom_text_field.dart';
 
@@ -31,6 +32,7 @@ class show_bottom_body extends StatefulWidget {
 }
 
 class _show_bottom_bodyState extends State<show_bottom_body> {
+  
   String? title;
   String? content;
   GlobalKey <FormState> mykey=GlobalKey();
