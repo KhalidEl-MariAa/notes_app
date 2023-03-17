@@ -11,7 +11,7 @@ class Edit_Note extends StatelessWidget {
       padding: const EdgeInsets.all(20.0),
       child: Column(
         
-        children: [CustomTextField(hintext: 'Title'),SizedBox(height: 25,),CustomTextField(hintext: 'Content',MaxLines: 5,)],
+        children: [CustomTextField(hintext: 'Title'),const SizedBox(height: 25,),CustomTextField(hintext: 'Content',MaxLines: 5,)],
       ),
     );
   }
