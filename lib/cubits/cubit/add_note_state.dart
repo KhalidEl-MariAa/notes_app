@@ -11,7 +11,7 @@ class AddNotefailure extends AddNoteState {
   String error;
 
   AddNotefailure({required this.error});
-  
+
 }
 
 class AddNoteLoading extends AddNoteState {}
