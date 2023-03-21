@@ -39,9 +39,8 @@ class _Notes_AddState extends State<Notes_Add> {
             // TODO: implement listener
           },
           builder: (context, state) {
-            return ModalProgressHUD(
-                inAsyncCall: state is AddNoteLoading ? true : false,
-                child: const SingleChildScrollView(child: show_bottom_body()));
+            return AbsorbPointer(absorbing: state is AddNoteLoading? true : false,
+            child: const SingleChildScrollView(child: show_bottom_body()));
           },
         ),
       ),
