@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 
 import 'package:notes_app/Models/note_models.dart';
+import 'package:notes_app/constants/constant.dart';
 import 'package:notes_app/cubits/cubit/add_note_cubit.dart';
 import 'package:notes_app/factors/custom_button.dart';
 import 'package:notes_app/factors/custom_text_field.dart';
@@ -15,35 +16,31 @@ class Notes_Add extends StatefulWidget {
 }
 
 class _Notes_AddState extends State<Notes_Add> {
-  bool isloading = false;
+
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.only(top: 50, left: 20, right: 20),
-      child: SingleChildScrollView(
-        child: BlocConsumer<AddNoteCubit, AddNoteState>(
-          listener: (context, state) {
-            if (state is AddNoteLoading){
-              isloading = true;
-            }
-            if(state is AddNoteSuccess){
-              ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('The Note is added succesfully'),duration: const Duration(seconds: 10)));
-            
+      child: BlocConsumer<AddNoteCubit, AddNoteState>(
+        listener: (context, state) {
+          
+          if(state is AddNoteSuccess){
+            ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('The Note is added succesfully'),duration: const Duration(seconds: 10)));
+          Navigator.pop(context);
 
-            
-            }
-            if (state is AddNotefailure){
-                ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('There is an error : ${state.error}'),duration: const Duration(seconds: 10)));
-                
-            }
-            // TODO: implement listener
-          },
-          builder: (context, state) {
-            return ModalProgressHUD(inAsyncCall: isloading,child: const show_bottom_body());
-            
-            
-          },
-        ),
+          
+          }
+          if (state is AddNotefailure){
+              ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('There is an error : ${state.error}'),duration: const Duration(seconds: 10)));
+              
+          }
+          // TODO: implement listener
+        },
+        builder: (context, state) {
+          return ModalProgressHUD(inAsyncCall: state is AddNoteLoading? true:false,child: const  SingleChildScrollView(child: show_bottom_body()));
+          
+          
+        },
       ),
     );
   }
@@ -94,11 +91,12 @@ class _show_bottom_bodyState extends State<show_bottom_body> {
             onPressed: (() {
               if (mykey.currentState!.validate()) {
                 mykey.currentState!.save();
+                var notemodel=note_model(title: title!,subtitle: content!,date: DateTime.now().toString(),color: Colors.amber.value);
+                BlocProvider.of<AddNoteCubit>(context).addNote(notemodel);
               } else {
                 validator = AutovalidateMode.always;
                 setState(() {});
-                BlocProvider.of<AddNoteCubit>(context).addNote(
-                    note_model(title: '', subtitle: '', color: 2, date: ''));
+               
               }
             }),
           ),
