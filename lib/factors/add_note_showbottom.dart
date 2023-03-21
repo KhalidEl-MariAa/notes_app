@@ -16,31 +16,34 @@ class Notes_Add extends StatefulWidget {
 }
 
 class _Notes_AddState extends State<Notes_Add> {
-
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(top: 50, left: 20, right: 20),
-      child: BlocConsumer<AddNoteCubit, AddNoteState>(
-        listener: (context, state) {
-          
-          if(state is AddNoteSuccess){
-            ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('The Note is added succesfully'),duration: const Duration(seconds: 10)));
-          Navigator.pop(context);
-
-          
-          }
-          if (state is AddNotefailure){
-              ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('There is an error : ${state.error}'),duration: const Duration(seconds: 10)));
-              
-          }
-          // TODO: implement listener
-        },
-        builder: (context, state) {
-          return ModalProgressHUD(inAsyncCall: state is AddNoteLoading? true:false,child: const  SingleChildScrollView(child: show_bottom_body()));
-          
-          
-        },
+    return BlocProvider(
+      create: (context) => AddNoteCubit(),
+      child: Padding(
+        padding: const EdgeInsets.only(top: 50, left: 20, right: 20),
+        child: BlocConsumer<AddNoteCubit, AddNoteState>(
+          listener: (context, state) {
+            if (state is AddNoteSuccess) {
+              ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                  content: Text('The Note is added succesfully'),
+                  duration: const Duration(seconds: 10)));
+              Navigator.pop(context);
+            }
+            if (state is AddNotefailure) {
+              ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                  content: Text('There is an error : ${state.error}'),
+                  duration: const Duration(seconds: 10)));
+              Navigator.pop(context);
+            }
+            // TODO: implement listener
+          },
+          builder: (context, state) {
+            return ModalProgressHUD(
+                inAsyncCall: state is AddNoteLoading ? true : false,
+                child: const SingleChildScrollView(child: show_bottom_body()));
+          },
+        ),
       ),
     );
   }
@@ -91,12 +94,15 @@ class _show_bottom_bodyState extends State<show_bottom_body> {
             onPressed: (() {
               if (mykey.currentState!.validate()) {
                 mykey.currentState!.save();
-                var notemodel=note_model(title: title!,subtitle: content!,date: DateTime.now().toString(),color: Colors.amber.value);
+                var notemodel = note_model(
+                    title: title!,
+                    subtitle: content!,
+                    date: DateTime.now().toString(),
+                    color: Colors.amber.value);
                 BlocProvider.of<AddNoteCubit>(context).addNote(notemodel);
               } else {
                 validator = AutovalidateMode.always;
                 setState(() {});
-               
               }
             }),
           ),
