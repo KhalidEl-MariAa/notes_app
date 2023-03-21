@@ -9,5 +9,8 @@ class CreateNoteLoading extends CreateNoteState {}
 
 class CreateNoteSucess extends CreateNoteState {}
 
-class CreateNoteFailure extends CreateNoteState {}
+class CreateNoteFailure extends CreateNoteState {
+  CreateNoteFailure({required this.error});
+  String error;
+}
 
