@@ -27,13 +27,13 @@ class _Notes_AddState extends State<Notes_Add> {
             if (state is AddNoteSuccess) {
               ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
                   content: Text('The Note is added succesfully'),
-                  duration: const Duration(seconds: 10)));
+                  duration:  Duration(seconds: 5)));
               Navigator.pop(context);
             }
             if (state is AddNotefailure) {
               ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                   content: Text('There is an error : ${state.error}'),
-                  duration: const Duration(seconds: 10)));
+                  duration: const Duration(seconds: 5)));
               Navigator.pop(context);
             }
             // TODO: implement listener
