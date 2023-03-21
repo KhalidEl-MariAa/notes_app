@@ -20,7 +20,7 @@ class main_page extends StatelessWidget {
     child:  Text('Notes',style: TextStyle(fontWeight: FontWeight.bold),),
     ) ,),
     floatingActionButton: FloatingActionButton(onPressed: () {
-      showModalBottomSheet(context: context, builder: (context) => const Notes_Add(),
+      showModalBottomSheet(isScrollControlled: true,context: context, builder: (context) => const Notes_Add(),
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(23)));
     },
     child: const Icon(Icons.add)),

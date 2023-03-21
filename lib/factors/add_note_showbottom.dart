@@ -21,7 +21,7 @@ class _Notes_AddState extends State<Notes_Add> {
     return BlocProvider(
       create: (context) => AddNoteCubit(),
       child: Padding(
-        padding: const EdgeInsets.only(top: 50, left: 20, right: 20),
+        padding:  EdgeInsets.only(top: 50, left: 20, right: 20,bottom: MediaQuery.of(context).viewInsets.bottom),
         child: BlocConsumer<AddNoteCubit, AddNoteState>(
           listener: (context, state) {
             if (state is AddNoteSuccess) {
@@ -106,7 +106,7 @@ class _show_bottom_bodyState extends State<show_bottom_body> {
             }),
           ),
           SizedBox(
-            height: 150,
+            height: 30,
           )
         ],
       ),
