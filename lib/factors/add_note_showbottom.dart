@@ -77,7 +77,7 @@ class _show_bottom_bodyState extends State<show_bottom_body> {
               title = value;
             },
           ),
-          SizedBox(
+        const  SizedBox(
             height: 20,
           ),
           CustomTextField(
@@ -87,7 +87,7 @@ class _show_bottom_bodyState extends State<show_bottom_body> {
               content = value;
             },
           ),
-          SizedBox(
+         const SizedBox(
             height: 50,
           ),
           MyButton(
@@ -98,7 +98,7 @@ class _show_bottom_bodyState extends State<show_bottom_body> {
                     title: title!,
                     subtitle: content!,
                     date: DateTime.now().toString(),
-                    color: Colors.amber.value);
+                    color: Colors.blue.value);
                 BlocProvider.of<AddNoteCubit>(context).addNote(notemodel);
               } else {
                 validator = AutovalidateMode.always;
@@ -106,7 +106,7 @@ class _show_bottom_bodyState extends State<show_bottom_body> {
               }
             }),
           ),
-          SizedBox(
+         const SizedBox(
             height: 30,
           )
         ],
