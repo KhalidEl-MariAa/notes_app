@@ -29,8 +29,8 @@ class customNote extends StatelessWidget {
           
           
           Padding(
-            padding: const EdgeInsets.only(top :10,left: 285),
-            child: Text('${DateTime.now().day}/${DateTime.now().month}/${DateTime.now().year}',style:  TextStyle(color: Colors.black.withOpacity(0.3)),),
+            padding: const EdgeInsets.only(top :10,left: 260),
+            child: Text(data.date,style:  TextStyle(color: Colors.black.withOpacity(0.3)),),
           )]),
         ),
       ),
