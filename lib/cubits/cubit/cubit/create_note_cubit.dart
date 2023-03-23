@@ -8,17 +8,16 @@ part 'create_note_state.dart';
 
 class CreateNoteCubit extends Cubit<CreateNoteState> {
   CreateNoteCubit() : super(CreateNoteInitial());
+List<note_model>? notes;
+  void getNotes(){
 
-  void GetNotes(){
-emit(CreateNoteLoading());
 
-try {
+
   var DataBox = Hive.box<note_model>(boxname);
-  var notes =DataBox.values.toList();
-  emit(CreateNoteSucess(notes));
-} catch (e) {
-   emit(CreateNoteFailure(error: e.toString())); 
-}
+  
+   notes =DataBox.values.toList();
+  
 
-  }
+
+}
 }

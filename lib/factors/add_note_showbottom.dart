@@ -16,6 +16,7 @@ class Notes_Add extends StatefulWidget {
 }
 
 class _Notes_AddState extends State<Notes_Add> {
+  
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
