@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
-
+import 'package:intl/intl.dart';
 import 'package:notes_app/Models/note_models.dart';
-import 'package:notes_app/constants/constant.dart';
 import 'package:notes_app/cubits/cubit/add_note_cubit.dart';
 import 'package:notes_app/factors/custom_button.dart';
 import 'package:notes_app/factors/custom_text_field.dart';
@@ -92,12 +90,14 @@ class _show_bottom_bodyState extends State<show_bottom_body> {
           ),
           MyButton(
             onPressed: (() {
+               var Date= DateTime.now();
+              
               if (mykey.currentState!.validate()) {
                 mykey.currentState!.save();
                 var notemodel = note_model(
                     title: title!,
                     subtitle: content!,
-                    date: DateTime.now().toString(),
+                  date: '${Date.day}/${Date.month}/${Date.year}',
                     color: Colors.blue.value);
                 BlocProvider.of<AddNoteCubit>(context).addNote(notemodel);
               } else {
