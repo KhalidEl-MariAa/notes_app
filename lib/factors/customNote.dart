@@ -25,7 +25,10 @@ class customNote extends StatelessWidget {
             child:  Text(data.title,style: const TextStyle(fontSize: 30,color: Colors.black)),
           ) ,
           subtitle: Text(data.subtitle,style: TextStyle(color: Colors.black.withOpacity(0.4)),),
-          trailing: IconButton(onPressed: (){}, icon: const Icon(Icons.delete,color: Colors.black,size: 30,)), ),
+          trailing: IconButton(onPressed: ()async {
+            await data.delete();
+          }
+          , icon: const Icon(Icons.delete,color: Colors.black,size: 30,)), ),
           
           
           Padding(
