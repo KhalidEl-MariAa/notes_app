@@ -51,7 +51,7 @@ class _main_pageState extends State<main_page> {
                 isScrollControlled: true,
                 context: context,
                 builder: (context) => const Notes_Add(),
-                shape: RoundedRectangleBorder(
+                                shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(23)));
           },
           child: const Icon(Icons.add)),
@@ -61,7 +61,7 @@ class _main_pageState extends State<main_page> {
              List<note_model>? notes= BlocProvider.of<CreateNoteCubit>(context).notes!;
           return ListView.builder(itemCount: notes.length ,
           itemBuilder: ((context, index) {
-            
+
             return  customNote(data: notes[index],);
           }));
         },
