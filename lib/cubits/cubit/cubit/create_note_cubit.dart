@@ -8,7 +8,8 @@ part 'create_note_state.dart';
 
 class CreateNoteCubit extends Cubit<CreateNoteState> {
   CreateNoteCubit() : super(CreateNoteInitial());
-List<note_model>? notes;
+ List<note_model>? notes;
+
   void getNotes(){
 
 

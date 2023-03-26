@@ -6,15 +6,12 @@ import 'package:notes_app/factors/add_note_showbottom.dart';
 
 import '../factors/customNote.dart';
 
-class main_page extends StatefulWidget {
-  const main_page({super.key});
+class main_page extends StatelessWidget {
+   main_page({super.key,});
   static String main_id = 'main page';
+  
+             
 
-  @override
-  State<main_page> createState() => _main_pageState();
-}
-
-class _main_pageState extends State<main_page> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -58,9 +55,9 @@ class _main_pageState extends State<main_page> {
       body: BlocBuilder<CreateNoteCubit, CreateNoteState>(
           builder: (context, state) {
             BlocProvider.of<CreateNoteCubit>(context).getNotes();
-             List<note_model>? notes= BlocProvider.of<CreateNoteCubit>(context).notes!;
+           List<note_model>? notes = BlocProvider.of<CreateNoteCubit>(context).notes;
           return ListView.builder(
-            itemCount: notes.length ,
+            itemCount: notes!.length ,
           itemBuilder: ((context, index) {
 
             return  customNote(data: notes[index],);

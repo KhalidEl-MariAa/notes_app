@@ -108,6 +108,7 @@ class _show_bottom_bodyState extends State<show_bottom_body> {
                     date: '${Date.day}/${Date.month}/${Date.year}',
                     color: Colors.blue.value);
                 BlocProvider.of<AddNoteCubit>(context).addNote(notemodel);
+                BlocProvider.of<CreateNoteCubit>(context).getNotes();
               } else {
                 validator = AutovalidateMode.always;
                 setState(() {});

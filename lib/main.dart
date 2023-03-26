@@ -30,7 +30,7 @@ class notes_app extends StatelessWidget {
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         routes: {
-          main_page.main_id: (context) => const main_page(),
+          main_page.main_id: (context) =>  main_page(),
           Edit_Note_Page.id: (context) => const Edit_Note_Page()
         },
         initialRoute: main_page.main_id,
