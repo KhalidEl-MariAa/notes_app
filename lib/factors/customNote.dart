@@ -35,25 +35,24 @@ class customNote extends StatelessWidget {
                 data.subtitle,
                 style: TextStyle(color: Colors.black.withOpacity(0.4)),
               ),
-              trailing: IconButton(
-                  onPressed: ()  {
-                    try {
-                       data.delete();
-                      BlocProvider.of<CreateNoteCubit>(context).getNotes();
-                      
-                        
-                      
-                    } catch (e) {
-                      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-                          content: Text(
-                              'this note was deleted before , refresh your page')));
-                    }
-                  },
-                  icon: const Icon(
-                    Icons.delete,
-                    color: Colors.black,
-                    size: 30,
-                  )),
+              trailing: 
+                 IconButton(
+                    onPressed: () {
+                      try {
+                        data.delete();
+                        BlocProvider.of<CreateNoteCubit>(context).getNotes();
+                      } catch (e) {
+                        ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                            content: Text(
+                                'this note was deleted before , refresh your page')));
+                      }
+                    },
+                    icon: const Icon(
+                      Icons.delete,
+                      color: Colors.black,
+                      size: 30,
+                    )),
+              
             ),
             Padding(
               padding: const EdgeInsets.only(top: 10, left: 260),

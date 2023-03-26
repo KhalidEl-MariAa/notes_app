@@ -59,7 +59,8 @@ class _main_pageState extends State<main_page> {
           builder: (context, state) {
             BlocProvider.of<CreateNoteCubit>(context).getNotes();
              List<note_model>? notes= BlocProvider.of<CreateNoteCubit>(context).notes!;
-          return ListView.builder(itemCount: notes.length ,
+          return ListView.builder(
+            itemCount: notes.length ,
           itemBuilder: ((context, index) {
 
             return  customNote(data: notes[index],);

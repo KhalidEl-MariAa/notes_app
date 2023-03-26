@@ -29,7 +29,7 @@ class _Notes_AddState extends State<Notes_Add> {
               listener: (context, state) {
                 if (state is AddNoteSuccess) {
                   ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-                      content: Text('The Note is added succesfully'),
+                      content: Text('The Note is added succesfully,refresh the page to show it'),
                       duration: Duration(seconds: 5)));
                   Navigator.pop(context);
                 }
